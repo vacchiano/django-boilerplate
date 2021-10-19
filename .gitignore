@@ -8,6 +8,8 @@ media
 
 # node modules
 jstools/node_modules
+static/style.css
+static/style.min.css
 
 # Backup files # 
 *.bak 
