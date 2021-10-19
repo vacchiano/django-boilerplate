@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 # temporary home page view
-from django.http import HttpResponse
+from django.shortcuts import render
 def home(request):
-    return HttpResponse("Hello, this is a Django boilerplate. Happy coding!")
+    return render(request, 'index.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,3 +32,6 @@ urlpatterns = [
     #temp home
     path('', home, name='home'), #replace with real home page
 ]
+
+if (settings.DEBUG):
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
